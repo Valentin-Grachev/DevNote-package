@@ -21,12 +21,6 @@ namespace DevNote
         public static Vector2 SetY(this Vector2 vector, float value) => new Vector2(vector.x, value);
 
 
-        public static T Attach<T>(this T tween, GameObject gameObject) where T : Tween
-        {
-            tween.SetLink(gameObject, LinkBehaviour.KillOnDisable);
-            return tween;
-        }
-
         public static bool IsPrefab(this GameObject gameObject) 
             => gameObject.scene == null || gameObject.scene.IsValid() == false;
 
