@@ -7,6 +7,6 @@
     "name": "DevNote Studio"
   },
   "dependencies": {
-    "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask"
+    "com.cysharp.unitask": "2.5.10"
   }
 }
