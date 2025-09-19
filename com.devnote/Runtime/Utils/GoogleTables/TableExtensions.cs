@@ -17,6 +17,14 @@ namespace DevNote
             throw new System.Exception(errorMessage);
         }
 
+        public static int GetInt(this Table table, Column keyColumn, Column valueColumn, string key)
+        {
+            int row = GetRow(table, keyColumn, key);
+            return table.GetInt(row, valueColumn);
+        }
+
+
+
         public static float GetFloat(this Table table, int row, Column column)
         {
             float result = -1;
