@@ -25,14 +25,14 @@ namespace DevNote
         public static float InterstitialCooldown { get; set; } = 0f;
 
 
-        private static float _interstitialShowLastTime = 0f;
-        protected static bool InterstitialCooldownPassed => Time.time - _interstitialShowLastTime > InterstitialCooldown;
+        public static float InterstitialShowLastTime { get; private set; } = 0f;
+        protected static bool InterstitialCooldownPassed => Time.time - InterstitialShowLastTime > InterstitialCooldown;
 
 
         protected static void InvokeInterstitialCallback(Action<AdShowStatus> callback, string key, AdShowStatus status)
         {
             if (status == AdShowStatus.Success)
-                _interstitialShowLastTime = Time.time;
+                InterstitialShowLastTime = Time.time;
 
             callback?.Invoke(status);
             OnInterstitialShown?.Invoke(key, status);
