@@ -42,7 +42,7 @@ namespace DevNote
             Random.Range(_randomPitch.x, _randomPitch.y) : _pitch;
 
 
-        public void Play() => Sound.Play(this);
+        public AudioSource Play() => Sound.Play(this);
 
         /*
         private void OnValidate()

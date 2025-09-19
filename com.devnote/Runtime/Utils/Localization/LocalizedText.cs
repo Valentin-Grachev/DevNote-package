@@ -7,9 +7,9 @@ namespace DevNote
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class LocalizedText : MonoBehaviour
     {
-        [SerializeField] private string _key;
+        [SerializeField] private string _key; public string Key => _key;
 
-        private TextMeshProUGUI _text;
+        private TextMeshProUGUI _text; public TextMeshProUGUI Text => _text;
 
         private void OnEnable()
         {
