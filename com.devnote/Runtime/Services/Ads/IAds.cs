@@ -25,14 +25,14 @@ namespace DevNote
         public static float InterstitialCooldown { get; set; } = 0f;
 
 
-        public static float InterstitialShowLastTime { get; private set; } = 0f;
-        protected static bool InterstitialCooldownPassed => Time.unscaledTime - InterstitialShowLastTime > InterstitialCooldown;
+        public static float AdShowLastTime { get; private set; } = 0f;
+        protected static bool InterstitialCooldownPassed => Time.unscaledTime - AdShowLastTime > InterstitialCooldown;
 
 
         protected static void InvokeInterstitialCallback(Action<AdShowStatus> callback, string key, AdShowStatus status)
         {
             if (status == AdShowStatus.Success)
-                InterstitialShowLastTime = Time.unscaledTime;
+                AdShowLastTime = Time.unscaledTime;
 
             callback?.Invoke(status);
             OnInterstitialShown?.Invoke(key, status);
@@ -41,7 +41,10 @@ namespace DevNote
         protected static void InvokeRewardedCallback(Action onRewarded, Action<AdShowStatus> callback, string key, AdShowStatus status)
         {
             if (status == AdShowStatus.Success)
+            {
+                AdShowLastTime = Time.unscaledTime;
                 onRewarded?.Invoke();
+            }
 
             callback?.Invoke(status);
             OnRewardedShown?.Invoke(key, status);
