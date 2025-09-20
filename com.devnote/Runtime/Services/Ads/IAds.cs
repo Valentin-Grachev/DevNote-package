@@ -10,8 +10,8 @@ namespace DevNote
         public bool AdBlockEnabled { get; }
 
 
-        public void ShowRewarded(string key = "Default", Action onRewarded = null, Action<AdShowStatus> callback = null);
-        public void ShowInterstitial(string key = "Default", Action<AdShowStatus> callback = null);
+        public void ShowRewarded(string key = IAdKey.Default, Action onRewarded = null, Action<AdShowStatus> callback = null);
+        public void ShowInterstitial(string key = IAdKey.Default, Action<AdShowStatus> callback = null);
         public void SetBanner(bool active);
 
     }
