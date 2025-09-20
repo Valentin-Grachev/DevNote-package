@@ -69,7 +69,7 @@ namespace DevNote
             if (IsChangeLocalPosition)
             {
                 Vector2 localPosition = isPortrait ? _portraitLocalPosition : _landscapeLocalPosition;
-                transform.localPosition = localPosition;
+                (transform as RectTransform).anchoredPosition = localPosition;
             }
             
             if (IsChangeScale)
