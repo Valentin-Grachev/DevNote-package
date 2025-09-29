@@ -33,7 +33,7 @@ namespace DevNote.SDK.Test
 
         void IAds.ShowRewarded(string key, Action onRewarded, Action<AdShowStatus> callback)
         {
-            var status = IAds.InterstitialCooldownPassed ? AdShowStatus.Success : AdShowStatus.CooldownNotFinished;
+            var status = AdShowStatus.Success;
 
             Debug.Log($"{Info.Prefix} Show rewarded. Key: \"{key}\", Status: {status}");
             IAds.InvokeRewardedCallback(onRewarded, callback, key, status);
