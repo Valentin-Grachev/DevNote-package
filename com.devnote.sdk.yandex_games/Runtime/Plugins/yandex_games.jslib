@@ -135,7 +135,7 @@ mergeInto(LibraryManager.library, {
     
   },
 
-  SendSaves: function (data, timeData) {
+  SendSaves: function (data) {
     
     // === SDK недоступен ===
     if (!player.setData) {
@@ -145,9 +145,8 @@ mergeInto(LibraryManager.library, {
     }
 
     // === Обработка ===
-    player.setData({
-      data: UTF8ToString(data), time: UTF8ToString(timeData), flush: false,
-    }).then(() => {
+    player.setData({ data: UTF8ToString(data) })
+    .then(() => {
       unity.SendMessage('YandexGames', 'HTML_OnSavesSent', 1);
       console.log('Player saves sent');
     });
@@ -165,7 +164,7 @@ mergeInto(LibraryManager.library, {
       
       if (data.data) 
       {
-        unity.SendMessage('YandexGames', 'HTML_OnSavesReceived', JSON.stringify({ data: data.data, time: data.time }));
+        unity.SendMessage('YandexGames', 'HTML_OnSavesReceived', data.data);
         console.log('Player saves received');
       }
       else 
