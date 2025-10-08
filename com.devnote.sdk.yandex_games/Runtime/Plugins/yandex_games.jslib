@@ -65,6 +65,10 @@ mergeInto(LibraryManager.library, {
     
   },
 
+  _GetServerTime: function() {
+    return sdk.serverTime();
+  },
+
 
   ShowRewarded: function () {
     
