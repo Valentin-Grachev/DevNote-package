@@ -186,22 +186,17 @@ mergeInto(LibraryManager.library, {
 
   RequestReview: function () {
 
-    // === SDK недоступен ===
-    if (!sdk.feedback.canReview) {
-      console.log("Yandex review not available!");
-      return;
-    }
-    
     // === Обработка ===
     sdk.feedback.canReview()
       .then(({ value, reason }) => {
         if (value) {
           unity.SendMessage('YandexGames', 'HTML_OnReviewOpened');
-          sdk.feedback.requestReview()
-            .then(({ feedbackSent }) => {
-              console.log(feedbackSent);
-              unity.SendMessage('YandexGames', 'HTML_OnReviewClosed');
-            })
+
+          sdk.feedback.requestReview().then(({ feedbackSent }) => {
+            console.log(feedbackSent);
+            unity.SendMessage('YandexGames', 'HTML_OnReviewClosed');
+          })
+          
         } else {
           console.log(reason)
         }
