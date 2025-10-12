@@ -32,7 +32,7 @@ namespace DevNote.SDK.YandexGames
             };
 
 
-            IEnvironment.StartGameTime = YG_Sdk.GetServerTime();
+            IEnvironment.StartGameUtcTime = YG_Sdk.GetServerTime();
 
             _initialized = true;
         }

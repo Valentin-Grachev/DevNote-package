@@ -9,7 +9,7 @@ namespace DevNote.SDK.Test
 
         bool ISelectableService.IsAvailableForSelection => true;
 
-        
+        bool IPurchase.PlatformIsSupportsPurchases => true;
 
         string IPurchase.GetPriceString(ProductKey productKey) => $"${productKey}";
 
@@ -17,7 +17,7 @@ namespace DevNote.SDK.Test
 
         void IPurchase.Purchase(ProductKey productKey, Action onSuccess, Action onError)
         {
-            IPurchase.InvokeHandlePurchaseCallback(productKey, success: true, onSuccess, onError);
+            IPurchase.InvokeHandlePurchase(productKey, success: true, onSuccess, onError);
             onSuccess?.Invoke();
         }
     }

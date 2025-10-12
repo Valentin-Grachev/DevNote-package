@@ -16,6 +16,8 @@ namespace DevNote.SDK.YandexGames
         bool ISelectableService.IsAvailableForSelection => YG_Sdk.IsAvailableForSelection;
         bool IInitializable.Initialized => _initialized;
 
+        bool IPurchase.PlatformIsSupportsPurchases => true;
+
         async void IInitializable.Initialize()
         {
             await UniTask.WaitUntil(() => YG_Purchases.available && save.Item.Initialized);
@@ -34,7 +36,7 @@ namespace DevNote.SDK.YandexGames
 
                     var purchasedProductKey = purchasedProductKeyString.ToEnum<ProductKey>();
 
-                    IPurchase.InvokeHandlePurchaseCallback(purchasedProductKey, success: true);
+                    IPurchase.InvokeHandlePurchase(purchasedProductKey, success: true);
 
                     if (IPurchaseHandler.ProductIsConsumable(purchasedProductKey))
                         YG_Purchases.Consume(purchasedProductKeyString);
@@ -73,7 +75,7 @@ namespace DevNote.SDK.YandexGames
                         YG_Purchases.Consume(productKey.ToString());
                 }
 
-                IPurchase.InvokeHandlePurchaseCallback(productKey, success, onSuccess, onError);
+                IPurchase.InvokeHandlePurchase(productKey, success, onSuccess, onError);
             });
             
         }
